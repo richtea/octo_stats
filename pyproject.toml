@@ -1,0 +1,146 @@
+[tool.poetry]
+name = "octopus-stats"
+version = "0.1.0"
+description = ""
+authors = ["Rich Tebb <rich@tebb.io>"]
+readme = "README.md"
+packages = [{include = "octopus_stats", from="src"}, {include = "scripts"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.1.3"
+matplotlib = "^3.8.2"
+attrs = "^23.1.0"
+requests = "^2.31.0"
+furl = "^2.1.3"
+cattrs = "^23.2.3"
+pendulum = {extras = ["test"], version = "^3.0.0"}
+python-dotenv = "^1.0.0"
+python-configuration = {extras = ["aws", "validation"], version = "^0.9.1"}
+fastparquet = "^2023.10.1"
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.0.0"
+black = "^23.12.1"
+ruff = "^0.1.9"
+pytest = "^7.4.3"
+time-machine = "^2.13.0"
+parquet-tools = "^0.2.15"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+download = "download:main"
+precommit = "scripts.precommit:main"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = [
+    "tests",
+]
+addopts = [
+    "--import-mode=importlib",
+]
+pythonpath = 'src'
+
+[tool.ruff]
+select = [
+    "ALL",
+    "B",
+    "C",
+    "E",
+    "F",
+    "G",
+    "I",
+    "N",
+    "Q",
+    "S",
+    "T",
+    "W",
+    "ANN",
+    "ARG",
+    "BLE",
+    "COM",
+    "DJ",
+    "DTZ",
+    "EM",
+    "ERA",
+    "EXE",
+    "FBT",
+    "ICN",
+    "INP",
+    "ISC",
+    "NPY",
+    "PD",
+    "PGH",
+    "PIE",
+    "PL",
+    "PT",
+    "PTH",
+    "PYI",
+    "RET",
+    "RSE",
+    "RUF",
+    "SIM",
+    "SLF",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "YTT",
+]
+ignore = [
+    "D",
+    "ANN",      # Type hints related, let mypy handle these.
+    "COM812",   # "Trailing comma missing". If black is happy, I'm happy.
+    "E501",     # "Line too long". If black is happy, I'm happy.
+    "EM101",    # "Exception must not use a string literal, assign to variable first"
+    "EM102",    # "Exception must not use an f-string literal, assign to variable first"
+    "FBT",      # flake8-boolean-trap: A bit heavy-handed for a PoC
+    "G004",     # "Logging statement uses f-string"
+    "N802",     # "Function name should be lowercase"
+    "N815",     # "Variable in class scope should not be mixedCase"
+    "N999",     # "Invalid module name"
+    "RET504",   # "Unnecessary variable assignment before `return` statement"
+    "S101",     # "Use of `assert` detected"
+    "SIM108",   # "Use ternary operator instead of if-else block"
+    "TRY003",   # "Avoid specifying long messages outside the exception class"
+    "UP007",    # Use X | Y for type annotations
+    "EXE001",   # Shebang is present but file is not executable
+    "EXE002",   # The file is executable but no shebang is present (happens in Docker / Windows)
+    "FIX002",   # Line contains TODO
+]
+line-length = 88
+target-version = "py311"
+namespace-packages = ["lib", "widgets"]
+
+[tool.ruff.per-file-ignores]
+"src/main.py" = ["INP001"]  # File `src/main.py` is part of an implicit namespace package. Add an `__init__.py`.
+"__init__.py" = ["E402", "F401", "PLC0414"]
+"src/app/mqlib/*.py" = ["TID252"]  # Allow relative imports in mq/ directory, we want to extract this in the future
+"tests/**/*.py" = [
+    "PLR2004",  # Magic value used in comparison, consider replacing with a constant variable
+    "SLF001",   # private-member-access
+]
+
+[tool.ruff.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
+
+[tool.ruff.flake8-quotes]
+inline-quotes = 'double'
+
+[tool.pyright]
+include = ["src"]
+exclude = ["**/node_modules",
+    "**/__pycache__",
+    "src/experimental",
+    "src/typestubs"
+]
+ignore = ["src/**/*.ipynb"]
+reportGeneralTypeIssues = false
+reportCallIssue = false
+reportPrivateUsage = false
+reportUnknownMemberType = false

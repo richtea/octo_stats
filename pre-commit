@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if ! command -v poetry &> /dev/null
+then
+    echo "'poetry' command could not be found"
+    exit 1
+fi
+
+poetry run precommit

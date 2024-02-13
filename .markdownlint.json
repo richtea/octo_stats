@@ -1,0 +1,6 @@
+{
+  "line-length": { "line_length": 120, "code_blocks": false, "tables": false },
+  "first-line-heading": false,
+  "MD024": false,
+  "MD034": false
+}

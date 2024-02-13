@@ -1,0 +1,38 @@
+{
+    "notebook.output.textLineLimit": 50,
+    "notebook.output.scrolling": true,
+    "notebook.output.wordWrap": false,
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.inlayHints.callArgumentNames": "partial",
+    "python.analysis.addImport.exactMatchOnly": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.enablePytestSupport": true,
+    "python.analysis.ignore": ["*.ipynb"],
+    "black-formatter.args": ["--line-length", "88"],
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.black-formatter",
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": "never"
+      },
+      "rewrap.autoWrap.enabled": true
+    },
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": ["tests"],
+    "python.testing.unittestEnabled": false,
+    "[markdown]": {
+      "editor.unicodeHighlight.ambiguousCharacters": false,
+      "editor.unicodeHighlight.invisibleCharacters": false,
+      "diffEditor.ignoreTrimWhitespace": false,
+      "editor.wordWrap": "on",
+      "editor.quickSuggestions": {
+        "comments": "off",
+        "strings": "off",
+        "other": "off"
+      },
+      "rewrap.autoWrap.enabled": true
+    }
+}
