@@ -6,7 +6,7 @@ keywords = ["Octopus Energy", "zappi", "myenergi"]
 authors = ["Rich Tebb <rich@tebb.io>"]
 readme = "README.md"
 license = "ISC"
-packages = [{include = "octopus_stats", from="src"}, {include = "scripts"}]
+packages = [{include = "octopus_stats", from="src"}, {include = "zappi_stats", from = "src"}]
 repository = "https://github.com/richtea/octo_stats"
 
 [tool.poetry.dependencies]
