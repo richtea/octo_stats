@@ -12,3 +12,7 @@ Some notes about the Octopus Energy API.
 
 [Brendan
 Griffin](https://brendg.co.uk/2023/05/09/retrieving-my-electricity-usage-with-the-octopus-energy-api-using-python-%F0%9F%90%99/)
+
+## License
+
+See the [license file](./LICENSE).

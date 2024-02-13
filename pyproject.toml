@@ -1,10 +1,13 @@
 [tool.poetry]
 name = "octopus-stats"
 version = "0.1.0"
-description = ""
+description = "Contains a Python (pandas/Jupyter) environment for downloading and analysing data from the Octopus Energy API and the MyEnergi API"
+keywords = ["Octopus Energy", "zappi", "myenergi"]
 authors = ["Rich Tebb <rich@tebb.io>"]
 readme = "README.md"
+license = "ISC"
 packages = [{include = "octopus_stats", from="src"}, {include = "scripts"}]
+repository = "https://github.com/richtea/octo_stats"
 
 [tool.poetry.dependencies]
 python = "^3.11"
